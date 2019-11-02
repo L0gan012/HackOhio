@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'userMetaData.dart';
 
 class HomePage extends StatefulWidget {
+  final User currentUser;
+  HomePage(this.currentUser);
   @override
   HomePageState createState() {
+
     return HomePageState();
   }
 }
