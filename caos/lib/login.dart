@@ -21,84 +21,109 @@ class LoginBody extends StatefulWidget {
 }
 
 class LoginBodyFormState extends State<LoginBody> {
-  final _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext buildContext) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Container(
-          padding: EdgeInsets.only(top: 100),
-          child: Text(
-            'Caos',
-            style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    print(height);
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: new Color(0xFFFCFDFF),
+      body: Flex(
+        direction: Axis.vertical,
+        children: <Widget>[
+          Expanded(
+            child: Container(),
+            flex: 1,
           ),
-        ),
-        Container(
-          padding: EdgeInsets.symmetric(vertical: 0, horizontal: 50),
-          child: Form(
-            key: _formKey,
+          Expanded(
+            flex: 3,
+            child: Align(
+              alignment: Alignment.center,
+              child: Text(
+                'caos',
+                style: TextStyle(fontSize: 70),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 3,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Text('Username', style: TextStyle(fontSize: 24)),
-                  ],
-                ),
-                TextFormField(
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please enter a username';
-                    }
-                    return null;
-                  },
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Text('Password', style: TextStyle(fontSize: 24)),
-                  ],
-                ),
-                TextFormField(
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please enter a password';
-                    }
-                    return null;
-                  },
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.only(bottom: 60, top: 20),
-                  child: ButtonTheme(
-                    minWidth: 200.0,
-                    height: 50.0,
-                    buttonColor: Colors.transparent,
-                    child: RaisedButton(
-                      child: Text('Login'),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(18.0),
-                          side: BorderSide(color: Colors.red)),
-                      onPressed: () {
-                        if (_formKey.currentState.validate()) {
-                          Scaffold.of(context).showSnackBar(
-                              SnackBar(content: Text('Processing Data')));
-                        } else {
-                          Scaffold.of(context).showSnackBar(SnackBar(
-                              content: Text('Username or Password incorrect')));
-                        }
-                      },
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                  width: width * .666,
+                  height: height * .05,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.blue[100],
                     ),
                   ),
+                  child: TextField(
+                    cursorColor: Colors.blue[100],
+                    style: TextStyle(
+                      fontSize: 25,
+                    ),
+                    decoration: InputDecoration.collapsed(
+                      hintText: 'username',
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                  width: width * .666,
+                  height: height * .05,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.blue[100],
+                    ),
+                  ),
+                  child: TextField(
+                     cursorColor: Colors.blue[100],
+                    obscureText: true,
+                    style: TextStyle(
+                      fontSize: 25,
+                    ),
+                    decoration: InputDecoration.collapsed(
+                      hintText: 'password',
+                    ),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Container(
+                      height: 5,
+                      width: width / 4,
+                      color: Colors.blue[100],
+                    ),
+                    GestureDetector(
+                      child: Text(
+                        'create an account',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                    Container(
+                      height: 5,
+                      width: width / 4,
+                      color: Colors.blue[100],
+                    )
+                  ],
                 )
               ],
             ),
           ),
-        )
-      ],
+          Expanded(
+            flex: 4,
+            child: Container(),
+          ),
+        ],
+      ),
     );
   }
 }
