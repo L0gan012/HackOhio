@@ -1,3 +1,4 @@
+import 'package:caos/homeScreen.dart';
 import 'package:flutter/material.dart';
 
 class CreateAccountPage extends StatefulWidget {
@@ -14,6 +15,16 @@ class CreateAccountPageState extends State<CreateAccountPage> {
     double height = MediaQuery.of(context).size.height;
     print(height);
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HomePage()),
+          );
+        },
+        child: Icon(Icons.near_me),
+      ),
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
@@ -29,10 +40,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
         ),
         title: Text(
           'create an account',
-          style: TextStyle(
-            color: Colors.black54,
-            fontFamily: 'Puritan'
-          ),
+          style: TextStyle(color: Colors.black54, fontFamily: 'Puritan'),
         ),
       ),
     );

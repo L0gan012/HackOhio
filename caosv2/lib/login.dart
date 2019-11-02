@@ -76,13 +76,14 @@ class LoginBodyFormState extends State<LoginBody> {
                         ),
                         decoration: InputDecoration.collapsed(
                           hintText: 'username',
+                          hintStyle: TextStyle(fontSize: 20)
                         ),
                       ),
                     ),
                     Container(
                       padding:
                           EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                      width: width * .6666,
+                      width: width * .666,
                       height: height * .05,
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -96,10 +97,12 @@ class LoginBodyFormState extends State<LoginBody> {
                         cursorColor: Colors.blue[100],
                         obscureText: true,
                         style: TextStyle(
+                          fontFamily: 'Puritan',
                           fontSize: 25,
                         ),
                         decoration: InputDecoration.collapsed(
                           hintText: 'password',
+                          hintStyle: TextStyle(fontSize: 20)
                         ),
                       ),
                     ),
