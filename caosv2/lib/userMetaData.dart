@@ -49,5 +49,21 @@ class User extends Model {
 
   void joinAGroup(Group group) {
     groups.add(group);
+    group.addUserToGroup(this);
   }
+
+  Group getGroup(String name, GroupTypes type) {
+    Group out = new Group('empty', GroupTypes.school);
+    for (Group g in groups) {
+      if (g.name == name && g.typeOfGroup == type) {
+        out = g;
+      }
+    }
+    return out;
+  }
+
+  List<Group> allGroups(){
+    return groups;
+  }
+
 }
