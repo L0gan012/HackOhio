@@ -1,2 +1,2 @@
 # HackOhio
-Hack Ohio group 2019
+Hack Ohio project 2019
