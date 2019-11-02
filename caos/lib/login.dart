@@ -1,3 +1,4 @@
+import 'package:caos/createAccountPage.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {
@@ -28,101 +29,135 @@ class LoginBodyFormState extends State<LoginBody> {
     print(height);
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: new Color(0xFFFCFDFF),
-      body: Flex(
-        direction: Axis.vertical,
-        children: <Widget>[
-          Expanded(
-            child: Container(),
-            flex: 1,
-          ),
-          Expanded(
-            flex: 3,
-            child: Align(
-              alignment: Alignment.center,
-              child: Text(
-                'caos',
-                style: TextStyle(fontSize: 70),
+      backgroundColor: Colors.grey[300],
+      body: SingleChildScrollView(
+        child: Container(
+          height: height,
+          child: Flex(
+            direction: Axis.vertical,
+            children: <Widget>[
+              Expanded(
+                child: Container(),
+                flex: 1,
               ),
-            ),
-          ),
-          Expanded(
-            flex: 3,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                  width: width * .666,
-                  height: height * .05,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      width: 3,
-                      color: Colors.blue[100],
-                    ),
-                  ),
-                  child: TextField(
-                    cursorColor: Colors.blue[100],
-                    style: TextStyle(
-                      fontSize: 25,
-                    ),
-                    decoration: InputDecoration.collapsed(
-                      hintText: 'username',
-                    ),
+              Expanded(
+                flex: 2,
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    'caos',
+                    style: TextStyle(fontSize: 70, color: Colors.black54),
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                  width: width * .666,
-                  height: height * .05,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      width: 3,
-                      color: Colors.blue[100],
-                    ),
-                  ),
-                  child: TextField(
-                     cursorColor: Colors.blue[100],
-                    obscureText: true,
-                    style: TextStyle(
-                      fontSize: 25,
-                    ),
-                    decoration: InputDecoration.collapsed(
-                      hintText: 'password',
-                    ),
-                  ),
-                ),
-                Row(
+              ),
+              Expanded(
+                flex: 2,
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Container(
-                      height: 5,
-                      width: width / 4,
-                      color: Colors.blue[100],
-                    ),
-                    GestureDetector(
-                      child: Text(
-                        'create an account',
-                        style: TextStyle(fontSize: 20),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                      width: width * .666,
+                      height: height * .05,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5),
+                        border: Border.all(
+                          width: 3,
+                          color: Colors.transparent,
+                        ),
+                      ),
+                      child: TextField(
+                        cursorColor: Colors.blue[100],
+                        style: TextStyle(
+                          fontFamily: 'Puritan',
+                          fontSize: 25,
+                        ),
+                        decoration: InputDecoration.collapsed(
+                          hintText: 'username',
+                        ),
                       ),
                     ),
                     Container(
-                      height: 5,
-                      width: width / 4,
-                      color: Colors.blue[100],
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                      width: width * .6666,
+                      height: height * .05,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5),
+                        border: Border.all(
+                          width: 3,
+                          color: Colors.transparent,
+                        ),
+                      ),
+                      child: TextField(
+                        cursorColor: Colors.blue[100],
+                        obscureText: true,
+                        style: TextStyle(
+                          fontSize: 25,
+                        ),
+                        decoration: InputDecoration.collapsed(
+                          hintText: 'password',
+                        ),
+                      ),
+                    ),
+                    FlatButton(
+                      child: Container(
+                        alignment: Alignment.center,
+                        width: width * .6666,
+                        height: height * .05,
+                        decoration: BoxDecoration(
+                          color: Colors.blue[300],
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Text(
+                          'login',
+                          style: TextStyle(color: Colors.white, fontSize: 25),
+                        ),
+                      ),
+                      onPressed: () {},
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Container(
+                          height: 5,
+                          width: width / 4,
+                          color: Colors.blue[100],
+                        ),
+                        GestureDetector(
+                          child: Text(
+                            'create an account',
+                            style:
+                                TextStyle(fontSize: 20, color: Colors.black54),
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CreateAccountPage()),
+                            );
+                          },
+                        ),
+                        Container(
+                          height: 5,
+                          width: width / 4,
+                          color: Colors.blue[100],
+                        )
+                      ],
                     )
                   ],
-                )
-              ],
-            ),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Container(),
+              ),
+            ],
           ),
-          Expanded(
-            flex: 4,
-            child: Container(),
-          ),
-        ],
+        ),
       ),
     );
   }
