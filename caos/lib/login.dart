@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 
-class login extends StatelessWidget {
+class Login extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Caos',
       home: Scaffold(
-        body: loginBody(),
+        body: LoginBody(),
       ),
     );
   }
 }
 
-class loginBody extends StatefulWidget {
+class LoginBody extends StatefulWidget {
   @override
-  loginBodyFormState createState() {
-    return loginBodyFormState();
+  LoginBodyFormState createState() {
+    return LoginBodyFormState();
   }
 }
 
-class loginBodyFormState extends State<loginBody> {
+class LoginBodyFormState extends State<LoginBody> {
   final _formKey = GlobalKey<FormState>();
 
   @override
