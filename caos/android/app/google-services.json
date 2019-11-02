@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:40591016201:android:3f91be77d6b469d4f393d8",
+        "mobilesdk_app_id": "1:40591016201:android:be36ac747862dff2f393d8",
         "android_client_info": {
-          "package_name": "com.example.caos"
+          "package_name": "com.hackOhio.caos"
         }
       },
       "oauth_client": [
