@@ -1,6 +1,6 @@
 # caos
 
-A new Flutter project.
+A new Charlie Tighe creation.
 
 ## Getting Started
 
