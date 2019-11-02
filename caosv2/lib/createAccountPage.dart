@@ -1,5 +1,6 @@
 import 'package:caos/homeScreen.dart';
 import 'package:flutter/material.dart';
+import 'userMetaData.dart';
 
 class CreateAccountPage extends StatefulWidget {
   @override
@@ -19,7 +20,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => HomePage()),
+            MaterialPageRoute(builder: (context) => HomePage(new User())),
           );
         },
         child: Icon(Icons.near_me),
