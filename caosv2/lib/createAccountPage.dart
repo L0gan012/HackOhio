@@ -34,130 +34,155 @@ class CreateAccountPageState extends State<CreateAccountPage> {
           style: TextStyle(color: Colors.black54, fontFamily: 'Puritan'),
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: Flex(
+        direction: Axis.vertical,
         children: <Widget>[
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-            width: width * .666,
-            height: height * .05,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(5),
-              border: Border.all(
-                width: 3,
-                color: Colors.transparent,
+          Expanded(
+              child: Stack(
+            alignment: Alignment.center,
+            children: <Widget>[
+              Icon(
+                Icons.account_circle,
+                size: 100,
+                color: Colors.white,
               ),
-            ),
-            child: TextField(
-              cursorColor: Colors.blue[100],
-              style: TextStyle(
-                fontFamily: 'Puritan',
-                fontSize: 25,
-              ),
-              decoration: InputDecoration.collapsed(
-                  hintText: 'First Name', hintStyle: TextStyle(fontSize: 20)),
+              Text('Set Photo')
+            ],
+          )),
+          Expanded(
+            flex: 2,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                  width: width * .666,
+                  height: height * .05,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.transparent,
+                    ),
+                  ),
+                  child: TextField(
+                    cursorColor: Colors.blue[100],
+                    style: TextStyle(
+                      fontFamily: 'Puritan',
+                      fontSize: 25,
+                    ),
+                    decoration: InputDecoration.collapsed(
+                        hintText: 'First Name',
+                        hintStyle: TextStyle(fontSize: 20)),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                  width: width * .666,
+                  height: height * .05,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.transparent,
+                    ),
+                  ),
+                  child: TextField(
+                    cursorColor: Colors.blue[100],
+                    style: TextStyle(
+                      fontFamily: 'Puritan',
+                      fontSize: 25,
+                    ),
+                    decoration: InputDecoration.collapsed(
+                        hintText: 'Last Name',
+                        hintStyle: TextStyle(fontSize: 20)),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                  width: width * .666,
+                  height: height * .05,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.transparent,
+                    ),
+                  ),
+                  child: TextField(
+                    cursorColor: Colors.blue[100],
+                    style: TextStyle(
+                      fontFamily: 'Puritan',
+                      fontSize: 25,
+                    ),
+                    decoration: InputDecoration.collapsed(
+                        hintText: 'Age', hintStyle: TextStyle(fontSize: 20)),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                  width: width * .666,
+                  height: height * .05,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.transparent,
+                    ),
+                  ),
+                  child: TextField(
+                    cursorColor: Colors.blue[100],
+                    style: TextStyle(
+                      fontFamily: 'Puritan',
+                      fontSize: 25,
+                    ),
+                    decoration: InputDecoration.collapsed(
+                        hintText: 'Email', hintStyle: TextStyle(fontSize: 20)),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                  width: width * .666,
+                  height: height * .05,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.transparent,
+                    ),
+                  ),
+                  child: TextField(
+                    cursorColor: Colors.blue[100],
+                    style: TextStyle(
+                      fontFamily: 'Puritan',
+                      fontSize: 25,
+                    ),
+                    decoration: InputDecoration.collapsed(
+                        hintText: 'Password',
+                        hintStyle: TextStyle(fontSize: 20)),
+                  ),
+                ),
+              ],
             ),
           ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-            width: width * .666,
-            height: height * .05,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(5),
-              border: Border.all(
-                width: 3,
-                color: Colors.transparent,
-              ),
-            ),
-            child: TextField(
-              cursorColor: Colors.blue[100],
-              style: TextStyle(
-                fontFamily: 'Puritan',
-                fontSize: 25,
-              ),
-              decoration: InputDecoration.collapsed(
-                  hintText: 'Last Name', hintStyle: TextStyle(fontSize: 20)),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-            width: width * .666,
-            height: height * .05,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(5),
-              border: Border.all(
-                width: 3,
-                color: Colors.transparent,
-              ),
-            ),
-            child: TextField(
-              cursorColor: Colors.blue[100],
-              style: TextStyle(
-                fontFamily: 'Puritan',
-                fontSize: 25,
-              ),
-              decoration: InputDecoration.collapsed(
-                  hintText: 'Age', hintStyle: TextStyle(fontSize: 20)),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-            width: width * .666,
-            height: height * .05,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(5),
-              border: Border.all(
-                width: 3,
-                color: Colors.transparent,
-              ),
-            ),
-            child: TextField(
-              cursorColor: Colors.blue[100],
-              style: TextStyle(
-                fontFamily: 'Puritan',
-                fontSize: 25,
-              ),
-              decoration: InputDecoration.collapsed(
-                  hintText: 'Email', hintStyle: TextStyle(fontSize: 20)),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-            width: width * .666,
-            height: height * .05,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(5),
-              border: Border.all(
-                width: 3,
-                color: Colors.transparent,
-              ),
-            ),
-            child: TextField(
-              cursorColor: Colors.blue[100],
-              style: TextStyle(
-                fontFamily: 'Puritan',
-                fontSize: 25,
-              ),
-              decoration: InputDecoration.collapsed(
-                  hintText: 'Password', hintStyle: TextStyle(fontSize: 20)),
-            ),
-          ),
+          Expanded(
+            child: Container(
+                child: FlatButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage(new User())),
+                );
+              },
+              child: Text('create ccount'),
+            )),
+          )
         ],
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => HomePage(new User())),
-          );
-        },
-        child: Icon(Icons.near_me),
       ),
     );
   }
