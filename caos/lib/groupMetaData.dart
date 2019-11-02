@@ -1,7 +1,9 @@
 import 'userMetaData.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Group extends Model {
+  ImagePicker groupPic;
   String name;
   bool admin;
   List<User> users;
@@ -23,6 +25,14 @@ class Group extends Model {
 
   set groupType(GroupTypes type) {
     typeOfGroup = type;
+  }
+
+  ImagePicker get groupProfilePicture {
+    return groupPic;
+  }
+
+  set grouProfilePicture(ImagePicker image) {
+    groupPic = image;
   }
 
   String get nameOfGroup {
