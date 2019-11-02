@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "40591016201",
+    "firebase_url": "https://caos-626a1.firebaseio.com",
+    "project_id": "caos-626a1",
+    "storage_bucket": "caos-626a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:40591016201:android:3f91be77d6b469d4f393d8",
+        "android_client_info": {
+          "package_name": "com.example.caos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "40591016201-cnlq8tgntb3r2ndpm9d2eirms17q4jbe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBe1JYdAw74Mq7wHS2QxC9pAKyqxq1JzzQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "40591016201-cnlq8tgntb3r2ndpm9d2eirms17q4jbe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
