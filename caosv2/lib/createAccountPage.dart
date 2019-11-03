@@ -19,6 +19,8 @@ class CreateAccountPageState extends State<CreateAccountPage> {
     SharedPreferences.getInstance().then((prefs) {
       setState(() {
         preferences = prefs;
+        print(preferences.getKeys());
+        preferences.clear();
       });
     });
   }
@@ -50,6 +52,8 @@ class CreateAccountPageState extends State<CreateAccountPage> {
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          width: width,
           height: height - 50,
           child: Flex(
             direction: Axis.vertical,
@@ -86,7 +90,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                         ),
                       ),
                       child: TextField(
-                     focusNode: new FocusNode(),
+                        focusNode: new FocusNode(),
                         onChanged: (String change) {
                           _save('firstNameChange', change);
                         },
@@ -219,59 +223,78 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                 ),
               ),
               Expanded(
-                child: FlatButton(
-                  onPressed: () {
-                    if (preferences.getString('firstNameChange') == "") {
-                      Scaffold.of(context).showSnackBar(SnackBar(
-                        content: Text('Please enter your first name'),
-                      ));
-                    } else if (preferences.getString('lastNameChange') == "") {
-                      Scaffold.of(context).showSnackBar(SnackBar(
-                        content: Text('Please enter your last name'),
-                      ));
-                    } else if (preferences.getString('ageChange') == "") {
-                      Scaffold.of(context).showSnackBar(SnackBar(
-                        content: Text('Please enter your age'),
-                      ));
-                    } else if (preferences.getString('emailChange') == "") {
-                      Scaffold.of(context).showSnackBar(SnackBar(
-                        content: Text('Please enter your email'),
-                      ));
-                    } else if (preferences.getString('passwordChange') == "") {
-                      Scaffold.of(context).showSnackBar(SnackBar(
-                        content: Text('Please enter a password'),
-                      ));
-                    } else {
-                      User current = new User();
-                      current.firstName =
-                          preferences.getString('firstNameChange');
-                      current.lastName =
-                          preferences.getString('lastNameChange');
-                      current.age = preferences.getString('ageChange');
-                      current.email = preferences.getString('emailChange');
-                      current.password =
-                          preferences.getString('passwordChange');
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => HomePage(current)),
-                      );
-                    }
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 40,
-                    width: width - 20,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Colors.blue[300]),
-                    child: Text(
-                      'create account',
-                      style: TextStyle(color: Colors.white),
+                flex: 2,
+                child: Align(
+                  child: FlatButton(
+                    onPressed: () {
+                      if (preferences.getString('firstNameChange') == null) {
+                        final snackBar = SnackBar(
+                          content: Text('Yay! A SnackBar!'),
+                          action: SnackBarAction(
+                            label: 'Undo',
+                            onPressed: () {
+                              // Some code to undo the change.
+                            },
+                          ),
+                        );
+
+                        // Find the Scaffold in the widget tree and use
+                        // it to show a SnackBar.
+                        Scaffold.of(context).showSnackBar(snackBar);
+                      } else if (preferences.getString('lastNameChange') ==
+                          "") {
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: Text('Please enter your last name'),
+                        ));
+                      } else if (preferences.getString('ageChange') == "") {
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: Text('Please enter your age'),
+                        ));
+                      } else if (preferences.getString('emailChange') == "") {
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: Text('Please enter your email'),
+                        ));
+                      } else if (preferences.getString('passwordChange') ==
+                          "") {
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: Text('Please enter a password'),
+                        ));
+                      } else {
+                        User current = new User();
+                        current.firstName =
+                            preferences.getString('firstNameChange');
+                        current.lastName =
+                            preferences.getString('lastNameChange');
+                        current.age = preferences.getString('ageChange');
+                        current.email = preferences.getString('emailChange');
+                        current.password =
+                            preferences.getString('passwordChange');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomePage(current)),
+                        );
+                      }
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 40,
+                      width: width,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.blue[200]),
+                      child: Text(
+                        'create account',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Puritan',
+                            fontSize: 30),
+                      ),
                     ),
                   ),
+                  alignment: Alignment.topCenter,
                 ),
-              )
+              ),
             ],
           ),
         ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'groupMetaData.dart'
+import 'groupMetaData.dart';
 
 class CreateGroup extends StatelessWidget {
   @override
@@ -58,7 +58,9 @@ class CreateGroup extends StatelessWidget {
                     fontFamily: 'Puritan',
                     fontSize: 25,
                   ),
-                  decoration: InputDecoration.collapsed(),
+                  decoration: InputDecoration.collapsed(
+                    hintText: 'name',
+                  ),
                 ),
               ),
               Text(
@@ -95,18 +97,21 @@ class CreateGroup extends StatelessWidget {
                   decoration: InputDecoration.collapsed(),
                 ),
               ),
-              FlatButton(onPressed: () {}, child: Container(
-                    alignment: Alignment.center,
-                    height: 40,
-                    width: width - 20,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Colors.blue[300]),
-                    child: Text(
-                      'create group',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),),
+              FlatButton(
+                onPressed: () {},
+                child: Container(
+                  alignment: Alignment.center,
+                  height: 40,
+                  width: width - 20,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: Colors.blue[300]),
+                  child: Text(
+                    'create group',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
