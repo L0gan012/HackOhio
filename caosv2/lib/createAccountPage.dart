@@ -76,7 +76,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                       ),
                       child: TextField(
                         onChanged: (String change) {
-                          _save(change);
+                          _save('firstNameChange',change);
                         },
                         textAlignVertical: TextAlignVertical.center,
                         cursorColor: Colors.blue[100],
@@ -104,7 +104,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                       ),
                       child: TextField(
                         onChanged: (String change) {
-                          model.lastName = change;
+                          _save('lastNameChange',change);
                         },
                         textAlignVertical: TextAlignVertical.center,
                         cursorColor: Colors.blue[100],
@@ -132,8 +132,9 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                       ),
                       child: TextField(
                         onChanged: (String change) {
-                          model.age = change;
+                          _save('ageChange',change);
                         },
+                        keyboardType: TextInputType.number,
                         textAlignVertical: TextAlignVertical.center,
                         cursorColor: Colors.blue[100],
                         style: TextStyle(
@@ -160,7 +161,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                       ),
                       child: TextField(
                         onChanged: (String change) {
-                          model.email = change;
+                          _save('emailChange',change);
                         },
                         textAlignVertical: TextAlignVertical.center,
                         cursorColor: Colors.blue[100],
@@ -188,8 +189,9 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                       ),
                       child: TextField(
                         onChanged: (String change) {
-                          model.password = change;
+                          _save('passwordChange',change);
                         },
+                        obscureText: true,
                         textAlignVertical: TextAlignVertical.center,
                         cursorColor: Colors.blue[100],
                         style: TextStyle(
@@ -207,24 +209,23 @@ class CreateAccountPageState extends State<CreateAccountPage> {
               Expanded(
                 child: FlatButton(
                   onPressed: () {
-                    print(_read());
-                    if (model.firstName == null) {
+                    if (_read('firstNameChange') == 0 || _read('firstNameChange') == "") {
                       Scaffold.of(context).showSnackBar(SnackBar(
                         content: Text('Please enter your first name'),
                       ));
-                    } else if (model.lastName == null) {
+                    } else if (_read('lastNameChange') == 0 || _read('lastNameChange') == "") {
                       Scaffold.of(context).showSnackBar(SnackBar(
                         content: Text('Please enter your last name'),
                       ));
-                    } else if (model.age == null) {
+                    } else if (_read('ageChange') == 0 || _read('ageChange') == "") {
                       Scaffold.of(context).showSnackBar(SnackBar(
                         content: Text('Please enter your age'),
                       ));
-                    } else if (model.email == null) {
+                    } else if (_read('emailChange') == 0 || _read('emailChange') == "") {
                       Scaffold.of(context).showSnackBar(SnackBar(
                         content: Text('Please enter your email'),
                       ));
-                    } else if (model.password == null) {
+                    } else if (_read('passwordChange') == 0 || _read('passwordChange') == "") {
                       Scaffold.of(context).showSnackBar(SnackBar(
                         content: Text('Please enter a password'),
                       ));
@@ -260,18 +261,18 @@ class CreateAccountPageState extends State<CreateAccountPage> {
     );
   }
 
-  _save(userData) async {
-      final prefs = await SharedPreferences.getInstance();
-      final key = 'my_int_key';
-      final value = 42;
-      prefs.setInt(key, value);
-      print('saved $value');
+  _save(String key, String userData) async {
+    final prefs = await SharedPreferences.getInstance();
+    final k = key;
+    final value = userData;
+    prefs.setString(k, value);
+    print('saved $value');
   }
 
-  _read() async {
-      final prefs = await SharedPreferences.getInstance();
-      final key = 'my_int_key';
-      final value = prefs.getInt(key) ?? 0;
-      print('read: $value');
+  _read(key) async {
+    final prefs = await SharedPreferences.getInstance();
+    final k = key;
+    final value = prefs.getString(k) ?? 0;
+    print('read: $value');
   }
 }
