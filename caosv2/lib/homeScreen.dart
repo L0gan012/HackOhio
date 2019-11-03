@@ -34,7 +34,7 @@ class HomePageState extends State<HomePage> {
           onPressed: () {Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => CreateGroup()),
+                            builder: (context) => CreateGroup(widget.currentUser)),
                       );},
         ),
       ),

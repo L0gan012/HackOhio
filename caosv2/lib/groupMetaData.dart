@@ -6,7 +6,7 @@ import 'package:image_picker/image_picker.dart';
 
 class Group extends Model {
   ImagePicker groupPic;
-  String name;
+  String name, description;
   bool admin;
   List<User> users;
   List<Group> links;
@@ -25,6 +25,10 @@ class Group extends Model {
     name = newName;
   }
 
+  set descriptionOfGroup(String newDesc) {
+    description = newDesc;
+  }
+
   set groupType(GroupTypes type) {
     typeOfGroup = type;
   }
@@ -39,6 +43,10 @@ class Group extends Model {
 
   String get nameOfGroup {
     return name;
+  }
+
+  String get descriptionOfGroup {
+    return description;
   }
 
   String getGroupTypeString() {

@@ -42,9 +42,8 @@ class User {
     username = newLastname;
   }
 
-  void makeAGroup(String name, GroupTypes type) {
-    Group newGroup = new Group(name, type);
-    groups.add(newGroup);
+  void makeAGroup(Group group) {
+    groups.add(group);
   }
 
   void joinAGroup(Group group) {
