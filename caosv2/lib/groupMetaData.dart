@@ -39,8 +39,24 @@ class Group extends Model {
     return name;
   }
 
-  GroupTypes get groupType {
-    return typeOfGroup;
+  String getGroupTypeString() {
+    switch (typeOfGroup) {
+      case GroupTypes.social:
+        return 'Social';
+        break;
+      case GroupTypes.work:
+        return 'Business';
+        break;
+      case GroupTypes.school:
+        return 'School';
+        break;
+      case GroupTypes.sports:
+        return 'Sports';
+        break;
+
+      default:
+        return 'error';
+    }
   }
 
   bool get isAdmin {

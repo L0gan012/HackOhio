@@ -78,12 +78,47 @@ class HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: ListView.builder(
-        itemBuilder: (BuildContext context, int index) {
-          print(metaUser.groups[index]);
-          return groupCard(metaUser.groups[index], height / 6);
-        },
-        itemCount: metaUser.groups.length,
+      body: Flex(
+        direction: Axis.vertical,
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              alignment: Alignment.centerLeft,
+              width: width - 20,
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius:
+                    BorderRadius.vertical(bottom: Radius.circular(20)),
+                border: Border.all(
+                  width: 3,
+                  color: Colors.blue[100],
+                ),
+              ),
+              child: TextField(
+                textAlignVertical: TextAlignVertical.bottom,
+                cursorColor: Colors.blue[100],
+                style: TextStyle(
+                  fontFamily: 'Puritan',
+                  fontSize: 20,
+                ),
+                decoration: InputDecoration.collapsed(
+                    hintText: 'search anything',
+                    hintStyle: TextStyle(fontSize: 20)),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 15,
+            child: ListView.builder(
+              itemBuilder: (BuildContext context, int index) {
+                print(metaUser.groups[index]);
+                return groupCard(metaUser.groups[index], height / 6);
+              },
+              itemCount: metaUser.groups.length,
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -108,11 +143,25 @@ Widget groupCard(Group group, double height) {
                   padding: EdgeInsets.all(10),
                   child: Container(
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                                'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/45572118/3/?bust=1568467706&width=1080'))),
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(
+                            'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/45572118/3/?bust=1568467706&width=1080'),
+                      ),
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Text('1'),
+                    width: height / 4,
+                    height: height / 4,
+                    decoration: BoxDecoration(
+                        color: Colors.red[300], shape: BoxShape.circle),
                   ),
                 ),
               ],
@@ -120,16 +169,43 @@ Widget groupCard(Group group, double height) {
           ),
           Expanded(
             flex: 5,
-            child: Column(
-              children: <Widget>[
-                Text(
-                  group.name,
-                  style: TextStyle(fontSize: 20),
-                )
-              ],
+            child: Padding(
+              padding: EdgeInsets.all(30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    group.name,
+                    style: TextStyle(
+                        fontSize: 25,
+                        color: Colors.black87,
+                        fontFamily: 'Puritan'),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        group.getGroupTypeString(),
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontFamily: 'Puritan',
+                            color: Colors.black54),
+                      ),
+                      Text(
+                        group.users.length.toString() + ' members',
+                        style: TextStyle(
+                            fontSize: 10,
+                            fontFamily: 'Puritan',
+                            color: Colors.black54),
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
           Expanded(
+            flex: 2,
             child: IconButton(
               icon: Icon(Icons.info_outline),
               onPressed: () {},
@@ -139,23 +215,4 @@ Widget groupCard(Group group, double height) {
       ),
     ),
   );
-}
-
-class CustomShapeBorder extends ContinuousRectangleBorder {
-  @override
-  Path getOuterPath(Rect rect, {TextDirection textDirection}) {
-    final double innerCircleRadius = 150.0;
-
-    Path path = Path();
-    path.lineTo(0, rect.height);
-    path.quadraticBezierTo(rect.width / 2 - (innerCircleRadius / 2) - 30,
-        rect.height + 15, rect.width / 2 - 75, rect.height + 50);
-    path.cubicTo(40, 30, 20, 10, 40, 40);
-    path.quadraticBezierTo(rect.width / 2 + (innerCircleRadius / 2) + 30,
-        rect.height + 15, rect.width, rect.height);
-    path.lineTo(rect.width, 0.0);
-    path.close();
-
-    return path;
-  }
 }
