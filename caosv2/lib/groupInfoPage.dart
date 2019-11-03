@@ -1,21 +1,19 @@
-import 'package:caos/groupInfoPage.dart';
 import 'package:flutter/material.dart';
 import 'userMetaData.dart';
 import 'package:caos/groupMetaData.dart';
 import 'dart:async';
 import 'package:path/path.dart';
-import 'createGroupPage.dart';
 
-class HomePage extends StatefulWidget {
-  final User currentUser;
-  HomePage(this.currentUser);
+class GroupInfoPage extends StatefulWidget {
+  final Group currentGroup;
+  GroupInfoPage(this.currentGroup);
   @override
-  HomePageState createState() {
-    return HomePageState();
+  GroupInfoPageState createState() {
+    return GroupInfoPageState();
   }
 }
 
-class HomePageState extends State<HomePage> {
+class GroupInfoPageState extends State<GroupInfoPage> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -31,11 +29,7 @@ class HomePageState extends State<HomePage> {
             Icons.add,
             size: width / 8,
           ),
-          onPressed: () {Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CreateGroup()),
-                      );},
+          onPressed: () {},
         ),
       ),
       appBar: AppBar(
@@ -122,14 +116,7 @@ class HomePageState extends State<HomePage> {
           ),
           Expanded(
             flex: 15,
-            child: ListView.builder(
-              itemBuilder: (BuildContext context, int index) {
-                print(widget.currentUser.groups[index]);
-                return groupCard(
-                    widget.currentUser.groups[index], height / 6, context);
-              },
-              itemCount: widget.currentUser.groups.length,
-            ),
+            child: Container(),
           ),
         ],
       ),
@@ -137,7 +124,7 @@ class HomePageState extends State<HomePage> {
   }
 }
 
-Widget groupCard(Group group, double height, BuildContext context) {
+Widget groupCard(Group group, double height) {
   return Card(
     elevation: 0,
     child: Container(
@@ -150,42 +137,34 @@ Widget groupCard(Group group, double height, BuildContext context) {
         children: <Widget>[
           Expanded(
             flex: 4,
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => GroupInfoPage(group)),
-                );
-              },
-              child: Stack(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(
-                              'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/45572118/3/?bust=1568467706&width=1080'),
-                        ),
+            child: Stack(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(
+                            'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/45572118/3/?bust=1568467706&width=1080'),
                       ),
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: Text('1'),
-                      width: height / 4,
-                      height: height / 4,
-                      decoration: BoxDecoration(
-                          color: Colors.red[300], shape: BoxShape.circle),
-                    ),
+                ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Text('1'),
+                    width: height / 4,
+                    height: height / 4,
+                    decoration: BoxDecoration(
+                        color: Colors.red[300], shape: BoxShape.circle),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           Expanded(
