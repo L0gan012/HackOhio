@@ -228,10 +228,16 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                   Scaffold.of(context).showSnackBar(SnackBar(
                     content: Text('Processing'),
                   ));
+                  User current = new User();
+                  current.firstName = _read('firstNameChange');
+                  current.lastName = _read('lastNameChange');
+                  current.age = _read('ageChange');
+                  current.email = _read('emailChange');
+                  current.password = _read('passwordChange');
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => HomePage(new User())),
+                        builder: (context) => HomePage(current)),
                   );
                 }
               },
@@ -267,5 +273,6 @@ class CreateAccountPageState extends State<CreateAccountPage> {
     final k = key;
     final value = prefs.getString(k) ?? 0;
     print('read: $value');
+    return value;
   }
 }
