@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'userMetaData.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:image_picker/image_picker.dart';
@@ -77,6 +79,22 @@ class Group extends Model {
 
   void removeUserFromGroup(User user) {
     users.remove(user);
+  }
+
+  List<DropdownMenuItem<GroupTypes>> groupTypesDropDown() {
+    List<DropdownMenuItem<GroupTypes>> out =
+        new List<DropdownMenuItem<GroupTypes>>();
+    out.add(new DropdownMenuItem<GroupTypes>(
+        value: GroupTypes.social, child: Text('social')));
+    out.add(new DropdownMenuItem<GroupTypes>(
+        value: GroupTypes.school, child: Text('school')));
+    out.add(new DropdownMenuItem<GroupTypes>(
+        value: GroupTypes.work, child: Text('work')));
+    out.add(new DropdownMenuItem<GroupTypes>(
+      value: GroupTypes.sports,
+      child: Text('sports'),
+    ));
+    return out;
   }
 }
 

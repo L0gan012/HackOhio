@@ -1,13 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'groupMetaData.dart';
+import 'groupMetaData.dart';
 
-class CreateGroup extends StatelessWidget {
+class CreateGroup extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return CreateGroupPageState();
+  }
+}
+
+class CreateGroupPageState extends State<CreateGroup> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  GroupTypes initialDropDownType = GroupTypes.social;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     List<DropdownMenuItem<String>> categories = new List();
+
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
@@ -30,85 +46,126 @@ class CreateGroup extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 60, horizontal: 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+        child: Container(
+          height: height / 2,
+          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 0),
+          child: Flex(
+            direction: Axis.vertical,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(
-                'name of group',
-                style: TextStyle(fontFamily: 'Puritan', fontSize: 30),
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                width: width * .666,
-                height: height * .05,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(5),
-                  border: Border.all(
-                    width: 3,
-                    color: Colors.transparent,
-                  ),
-                ),
-                child: TextField(
-                  textAlignVertical: TextAlignVertical.center,
-                  cursorColor: Colors.blue[100],
-                  style: TextStyle(
-                    fontFamily: 'Puritan',
-                    fontSize: 25,
-                  ),
-                  decoration: InputDecoration.collapsed(
-                    hintText: 'name',
+              Expanded(
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Container(
+                    padding: EdgeInsets.only(left: 5, bottom: 3),
+                    child: Text(
+                      'name of group',
+                      style: TextStyle(fontFamily: 'Puritan', fontSize: 20),
+                    ),
                   ),
                 ),
               ),
-              Text(
-                'category',
-                style: TextStyle(fontFamily: 'Puritan', fontSize: 30),
-              ),
-              DropdownButtonFormField(
-                items: categories,
-                decoration: InputDecoration(),
-              ),
-              Text(
-                'invite members',
-                style: TextStyle(fontFamily: 'Puritan', fontSize: 30),
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                width: width * .666,
-                height: height * .05,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(5),
-                  border: Border.all(
-                    width: 3,
-                    color: Colors.transparent,
-                  ),
-                ),
-                child: TextField(
-                  textAlignVertical: TextAlignVertical.center,
-                  cursorColor: Colors.blue[100],
-                  style: TextStyle(
-                    fontFamily: 'Puritan',
-                    fontSize: 25,
-                  ),
-                  decoration: InputDecoration.collapsed(),
-                ),
-              ),
-              FlatButton(
-                onPressed: () {},
+              Expanded(
                 child: Container(
-                  alignment: Alignment.center,
-                  height: 40,
-                  width: width - 20,
+                  padding: EdgeInsets.only(left: 10),
+                  alignment: Alignment.centerLeft,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.blue[300]),
-                  child: Text(
-                    'create group',
-                    style: TextStyle(color: Colors.white),
+                    color: Colors.white,
+                  ),
+                  child: TextField(
+                    textAlignVertical: TextAlignVertical.center,
+                    cursorColor: Colors.blue[100],
+                    style: TextStyle(
+                      fontFamily: 'Puritan',
+                      fontSize: 25,
+                    ),
+                    decoration: InputDecoration.collapsed(
+                      hintText: 'name',
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Container(
+                    padding: EdgeInsets.only(left: 5, bottom: 3),
+                    child: Text(
+                      'group type',
+                      style: TextStyle(fontFamily: 'Puritan', fontSize: 20),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.only(left: 10),
+                  alignment: Alignment.centerLeft,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                  ),
+                  child: DropdownButton<GroupTypes>(
+                    value: initialDropDownType,
+                    elevation: 0,
+                    style: TextStyle(color: Colors.black87),
+                    onChanged: (GroupTypes newValue) {
+                      setState(() {
+                        initialDropDownType = newValue;
+                      });
+                    },
+                    items: new Group('name', GroupTypes.school)
+                        .groupTypesDropDown(),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Container(
+                    padding: EdgeInsets.only(left: 5, bottom: 3),
+                    child: Text(
+                      'invite members',
+                      style: TextStyle(fontFamily: 'Puritan', fontSize: 20),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.only(left: 10),
+                  alignment: Alignment.centerLeft,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                  ),
+                  child: TextField(
+                    textAlignVertical: TextAlignVertical.center,
+                    cursorColor: Colors.blue[100],
+                    style: TextStyle(
+                      fontFamily: 'Puritan',
+                      fontSize: 25,
+                    ),
+                    decoration: InputDecoration.collapsed(
+                      hintText: 'search for people...',
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: FlatButton(
+                  onPressed: () {},
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 40,
+                    width: width - 20,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.blue[300]),
+                    child: Text(
+                      'create group',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
               ),
