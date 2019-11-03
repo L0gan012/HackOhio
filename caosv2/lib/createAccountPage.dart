@@ -14,6 +14,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
   Widget build(BuildContext buildContext) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    User current = new User();
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
@@ -68,6 +69,9 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                     ),
                   ),
                   child: TextField(
+                    onChanged: (String change) {
+                      current.firstName = change;
+                    },
                     textAlignVertical: TextAlignVertical.center,
                     cursorColor: Colors.blue[100],
                     style: TextStyle(
@@ -92,6 +96,9 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                     ),
                   ),
                   child: TextField(
+                    onChanged: (String change) {
+                      current.lastName = change;
+                    },
                     textAlignVertical: TextAlignVertical.center,
                     cursorColor: Colors.blue[100],
                     style: TextStyle(
@@ -116,6 +123,9 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                     ),
                   ),
                   child: TextField(
+                    onChanged: (String change) {
+                      current.age = change;
+                    },
                     textAlignVertical: TextAlignVertical.center,
                     cursorColor: Colors.blue[100],
                     style: TextStyle(
@@ -139,6 +149,9 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                     ),
                   ),
                   child: TextField(
+                    onChanged: (String change) {
+                      current.email = change;
+                    },
                     textAlignVertical: TextAlignVertical.center,
                     cursorColor: Colors.blue[100],
                     style: TextStyle(
@@ -162,6 +175,9 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                     ),
                   ),
                   child: TextField(
+                    onChanged: (String change) {
+                      current.password = change;
+                    },
                     textAlignVertical: TextAlignVertical.center,
                     cursorColor: Colors.blue[100],
                     style: TextStyle(
@@ -179,10 +195,33 @@ class CreateAccountPageState extends State<CreateAccountPage> {
           Expanded(
             child: FlatButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomePage(new User())),
-                );
+                if (current.firstName == null) {
+                  SnackBar(
+                    content: Text('Please enter your first name'),
+                  );
+                } else if (current.lastName == null) {
+                  SnackBar(
+                    content: Text('Please enter your last name'),
+                  );
+                } else if (current.age == null) {
+                  SnackBar(
+                    content: Text('Please enter your age'),
+                  );
+                } else if (current.email == null) {
+                  SnackBar(
+                    content: Text('Please enter your email'),
+                  );
+                } else if (current.password == null) {
+                  SnackBar(
+                    content: Text('Please enter a password'),
+                  );
+                } else {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => HomePage(new User())),
+                  );
+                }
               },
               child: Container(
                 alignment: Alignment.center,

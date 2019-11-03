@@ -4,7 +4,7 @@ import 'package:image_picker/image_picker.dart';
 
 class User extends Model {
   ImagePicker avatar;
-  String username, password, firstName, lastName;
+  String username, password, firstName, lastName, email, age;
   List<Group> groups;
   User() {
     groups = new List<Group>();
