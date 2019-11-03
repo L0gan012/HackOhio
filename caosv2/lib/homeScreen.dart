@@ -27,8 +27,8 @@ class HomePageState extends State<HomePage> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       floatingActionButton: Container(
-        height: width/6,
-        width: width/6,
+        height: width / 6,
+        width: width / 6,
         child: FloatingActionButton(
           backgroundColor: Colors.blue[100],
           elevation: 0,
