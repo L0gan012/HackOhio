@@ -14,15 +14,7 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    User metaUser = new User();
-    User me = new User();
-    me.firstName = 'luke';
-    Group otherGroup = new Group('265', GroupTypes.social);
-    Group group = new Group('Hackers', GroupTypes.work);
-    group.addUserToGroup(me);
-    group.newLink(otherGroup);
-    metaUser.makeAGroup('265', GroupTypes.school);
-    metaUser.joinAGroup(group);
+    
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -125,10 +117,10 @@ class HomePageState extends State<HomePage> {
             flex: 15,
             child: ListView.builder(
               itemBuilder: (BuildContext context, int index) {
-                print(metaUser.groups[index]);
-                return groupCard(metaUser.groups[index], height / 6);
+                print(widget.currentUser.groups[index]);
+                return groupCard(widget.currentUser.groups[index], height / 6);
               },
-              itemCount: metaUser.groups.length,
+              itemCount: widget.currentUser.groups.length,
             ),
           ),
         ],
