@@ -28,7 +28,6 @@ class CreateAccountPageState extends State<CreateAccountPage> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
@@ -51,7 +50,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
-          height: height-50,
+          height: height - 50,
           child: Flex(
             direction: Axis.vertical,
             children: <Widget>[
@@ -87,6 +86,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                         ),
                       ),
                       child: TextField(
+                     focusNode: new FocusNode(),
                         onChanged: (String change) {
                           _save('firstNameChange', change);
                         },
