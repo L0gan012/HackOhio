@@ -135,6 +135,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                           onChanged: (String change) {
                             model.age = change;
                           },
+                          keyboardType: TextInputType.number,
                           textAlignVertical: TextAlignVertical.center,
                           cursorColor: Colors.blue[100],
                           style: TextStyle(
@@ -191,6 +192,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                           onChanged: (String change) {
                             model.password = change;
                           },
+                          obscureText: true,
                           textAlignVertical: TextAlignVertical.center,
                           cursorColor: Colors.blue[100],
                           style: TextStyle(
