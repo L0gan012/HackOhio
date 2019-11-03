@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:332045270095:android:292ce200d34a765cc2be3a",
         "android_client_info": {
-          "package_name": "com.android.application"
+          "package_name": "com.caos.firebase"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "332045270095-rtnbsnj0ds484h0eok7rtq4d3s0snjtv.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.android.application",
+            "package_name": "com.caos.firebase",
             "certificate_hash": "2975c5a3cfa8c56a4dcb81b639b62078897bac18"
           }
         },
