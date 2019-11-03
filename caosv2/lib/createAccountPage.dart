@@ -229,36 +229,31 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                     onPressed: () {
                       if (preferences.getString('firstNameChange') == null) {
                         final snackBar = SnackBar(
-                          content: Text('Yay! A SnackBar!'),
-                          action: SnackBarAction(
-                            label: 'Undo',
-                            onPressed: () {
-                              // Some code to undo the change.
-                            },
-                          ),
+                          content: Text('Please enter your first name'),
                         );
-
-                        // Find the Scaffold in the widget tree and use
-                        // it to show a SnackBar.
                         Scaffold.of(context).showSnackBar(snackBar);
                       } else if (preferences.getString('lastNameChange') ==
-                          "") {
-                        Scaffold.of(context).showSnackBar(SnackBar(
+                          null) {
+                        final snackBar = SnackBar(
                           content: Text('Please enter your last name'),
-                        ));
-                      } else if (preferences.getString('ageChange') == "") {
-                        Scaffold.of(context).showSnackBar(SnackBar(
+                        );
+                        Scaffold.of(context).showSnackBar(snackBar);
+                      } else if (preferences.getString('ageChange') == null) {
+                        final snackBar = SnackBar(
                           content: Text('Please enter your age'),
-                        ));
-                      } else if (preferences.getString('emailChange') == "") {
-                        Scaffold.of(context).showSnackBar(SnackBar(
+                        );
+                        Scaffold.of(context).showSnackBar(snackBar);
+                      } else if (preferences.getString('emailChange') == null) {
+                        final snackBar = SnackBar(
                           content: Text('Please enter your email'),
-                        ));
+                        );
+                        Scaffold.of(context).showSnackBar(snackBar);
                       } else if (preferences.getString('passwordChange') ==
-                          "") {
-                        Scaffold.of(context).showSnackBar(SnackBar(
+                          null) {
+                        final snackBar = SnackBar(
                           content: Text('Please enter a password'),
-                        ));
+                        );
+                        Scaffold.of(context).showSnackBar(snackBar);
                       } else {
                         User current = new User();
                         current.firstName =
