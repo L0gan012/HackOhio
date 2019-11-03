@@ -5,6 +5,7 @@ import 'package:caos/groupMetaData.dart';
 import 'dart:async';
 import 'package:path/path.dart';
 import 'createGroupPage.dart';
+import 'individualProfile.dart';
 
 class HomePage extends StatefulWidget {
   final User currentUser;
@@ -31,11 +32,13 @@ class HomePageState extends State<HomePage> {
             Icons.add,
             size: width / 8,
           ),
-          onPressed: () {Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CreateGroup(widget.currentUser)),
-                      );},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => CreateGroup(widget.currentUser)),
+            );
+          },
         ),
       ),
       appBar: AppBar(
@@ -52,10 +55,19 @@ class HomePageState extends State<HomePage> {
               children: <Widget>[
                 Expanded(
                   child: Align(
-                    child: CircleAvatar(
-                      radius: 30,
-                      backgroundImage: NetworkImage(
-                          'https://www.thoughtco.com/thmb/wSg3B-jSZQJcTMCwUbI_P6We1fE=/4560x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/duckling-close-up-500315849-572917c93df78ced1f0b99ec.jpg'),
+                    child: FlatButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => IndividualProfile()),
+                        );
+                      },
+                      child: CircleAvatar(
+                        radius: 30,
+                        backgroundImage: NetworkImage(
+                            'https://www.thoughtco.com/thmb/wSg3B-jSZQJcTMCwUbI_P6We1fE=/4560x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/duckling-close-up-500315849-572917c93df78ced1f0b99ec.jpg'),
+                      ),
                     ),
                     alignment: Alignment.centerLeft,
                   ),
