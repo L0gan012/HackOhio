@@ -26,6 +26,19 @@ class HomePageState extends State<HomePage> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      floatingActionButton: Container(
+        height: width/6,
+        width: width/6,
+        child: FloatingActionButton(
+          backgroundColor: Colors.blue[100],
+          elevation: 0,
+          child: Icon(
+            Icons.add,
+            size: width / 8,
+          ),
+          onPressed: () {},
+        ),
+      ),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.blue[100],
@@ -170,14 +183,15 @@ Widget groupCard(Group group, double height) {
           Expanded(
             flex: 5,
             child: Padding(
-              padding: EdgeInsets.all(30),
+              padding: EdgeInsets.only(left: 20, top: 10, right: 5, bottom: 10),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
                     group.name,
                     style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 28,
                         color: Colors.black87,
                         fontFamily: 'Puritan'),
                   ),
@@ -191,15 +205,30 @@ Widget groupCard(Group group, double height) {
                             fontFamily: 'Puritan',
                             color: Colors.black54),
                       ),
+                      Container(
+                        width: 3,
+                        height: 3,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.black38,
+                        ),
+                      ),
                       Text(
                         group.users.length.toString() + ' members',
                         style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 15,
                             fontFamily: 'Puritan',
                             color: Colors.black54),
-                      )
+                      ),
                     ],
-                  )
+                  ),
+                  Text(
+                    group.links.length.toString() + ' links',
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black54,
+                        fontFamily: 'Puritan'),
+                  ),
                 ],
               ),
             ),
