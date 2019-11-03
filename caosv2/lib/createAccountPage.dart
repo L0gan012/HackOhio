@@ -213,25 +213,30 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                 return FlatButton(
                   onPressed: () {
                     if (model.firstName == null) {
+                      Scaffold.of(context).showSnackBar(
                       SnackBar(
                         content: Text('Please enter your first name'),
-                      );
+                      ));
                     } else if (model.lastName == null) {
+                      Scaffold.of(context).showSnackBar(
                       SnackBar(
                         content: Text('Please enter your last name'),
-                      );
+                      ));
                     } else if (model.age == null) {
+                      Scaffold.of(context).showSnackBar(
                       SnackBar(
                         content: Text('Please enter your age'),
-                      );
+                      ));
                     } else if (model.email == null) {
+                      Scaffold.of(context).showSnackBar(
                       SnackBar(
                         content: Text('Please enter your email'),
-                      );
+                      ));
                     } else if (model.password == null) {
+                      Scaffold.of(context).showSnackBar(
                       SnackBar(
-                        content: Text('Please enter a password'),
-                      );
+                        content: Text('Please enter your password'),
+                      ));
                     } else {
                       Navigator.push(
                         context,
