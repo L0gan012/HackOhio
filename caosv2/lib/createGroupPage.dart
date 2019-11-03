@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'groupMetaData.dart'
 
 class CreateGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    List<DropdownMenuItem<String>> categories = new List();
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
@@ -29,7 +31,7 @@ class CreateGroup extends StatelessWidget {
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 100, horizontal: 20),
+          padding: EdgeInsets.symmetric(vertical: 60, horizontal: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -37,25 +39,74 @@ class CreateGroup extends StatelessWidget {
                 'name of group',
                 style: TextStyle(fontFamily: 'Puritan', fontSize: 30),
               ),
-              TextField(
-                style: TextStyle(fontFamily: 'Puritan', fontSize: 18),
-                textAlignVertical: TextAlignVertical.center,
-                cursorColor: Colors.blue[100],
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                width: width * .666,
+                height: height * .05,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(5),
+                  border: Border.all(
+                    width: 3,
+                    color: Colors.transparent,
+                  ),
+                ),
+                child: TextField(
+                  textAlignVertical: TextAlignVertical.center,
+                  cursorColor: Colors.blue[100],
+                  style: TextStyle(
+                    fontFamily: 'Puritan',
+                    fontSize: 25,
+                  ),
+                  decoration: InputDecoration.collapsed(),
+                ),
               ),
               Text(
                 'category',
                 style: TextStyle(fontFamily: 'Puritan', fontSize: 30),
               ),
-              DropdownButtonFormField(),
+              DropdownButtonFormField(
+                items: categories,
+                decoration: InputDecoration(),
+              ),
               Text(
                 'invite members',
                 style: TextStyle(fontFamily: 'Puritan', fontSize: 30),
               ),
-              TextField(
-                style: TextStyle(fontFamily: 'Puritan', fontSize: 18),
-                textAlignVertical: TextAlignVertical.center,
-                cursorColor: Colors.blue[100],
-              )
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                width: width * .666,
+                height: height * .05,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(5),
+                  border: Border.all(
+                    width: 3,
+                    color: Colors.transparent,
+                  ),
+                ),
+                child: TextField(
+                  textAlignVertical: TextAlignVertical.center,
+                  cursorColor: Colors.blue[100],
+                  style: TextStyle(
+                    fontFamily: 'Puritan',
+                    fontSize: 25,
+                  ),
+                  decoration: InputDecoration.collapsed(),
+                ),
+              ),
+              FlatButton(onPressed: () {}, child: Container(
+                    alignment: Alignment.center,
+                    height: 40,
+                    width: width - 20,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.blue[300]),
+                    child: Text(
+                      'create group',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),),
             ],
           ),
         ),
