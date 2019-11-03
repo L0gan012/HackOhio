@@ -46,7 +46,7 @@ class LoginBodyFormState extends State<LoginBody> {
                   alignment: Alignment.center,
                   child: Text(
                     'caos',
-                    style: TextStyle(fontSize: 70, color: Colors.black54),
+                    style: TextStyle(fontSize: 70, color: Colors.black54,fontFamily: 'Puritan'),
                   ),
                 ),
               ),
@@ -77,7 +77,7 @@ class LoginBodyFormState extends State<LoginBody> {
                         ),
                         decoration: InputDecoration.collapsed(
                           hintText: 'username',
-                          hintStyle: TextStyle(fontSize: 20)
+                          hintStyle: TextStyle(fontSize: 20,fontFamily: 'Puritan')
                         ),
                       ),
                     ),
@@ -104,7 +104,7 @@ class LoginBodyFormState extends State<LoginBody> {
                         ),
                         decoration: InputDecoration.collapsed(
                           hintText: 'password',
-                          hintStyle: TextStyle(fontSize: 20)
+                          hintStyle: TextStyle(fontSize: 20,fontFamily: 'Puritan')
                         ),
                       ),
                     ),
@@ -119,7 +119,7 @@ class LoginBodyFormState extends State<LoginBody> {
                         ),
                         child: Text(
                           'login',
-                          style: TextStyle(color: Colors.white, fontSize: 25),
+                          style: TextStyle(color: Colors.white, fontSize: 25,fontFamily: 'Puritan'),
                         ),
                       ),
                       onPressed: () {},
@@ -136,7 +136,7 @@ class LoginBodyFormState extends State<LoginBody> {
                           child: Text(
                             'create an account',
                             style:
-                                TextStyle(fontSize: 20, color: Colors.black54),
+                                TextStyle(fontSize: 20, color: Colors.black54,fontFamily: 'Puritan'),
                           ),
                           onTap: () {
                             Navigator.push(
