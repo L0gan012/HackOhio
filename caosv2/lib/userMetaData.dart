@@ -16,6 +16,7 @@ class User extends Model {
 
   set profilePicture(ImagePicker image) {
     avatar = image;
+    notifyListeners();
   }
 
   String get getUsername {
@@ -24,6 +25,7 @@ class User extends Model {
 
   set updateUsername(String newUsername) {
     username = newUsername;
+    notifyListeners();
   }
 
   String get getFirstName {
@@ -32,6 +34,7 @@ class User extends Model {
 
   set updateFirstName(String newFirsName) {
     firstName = newFirsName;
+    notifyListeners();
   }
 
   String get getLastName {
@@ -40,16 +43,19 @@ class User extends Model {
 
   set updateLastName(String newLastname) {
     username = newLastname;
+    notifyListeners();
   }
 
   void makeAGroup(String name, GroupTypes type) {
     Group newGroup = new Group(name, type);
     groups.add(newGroup);
+    notifyListeners();
   }
 
   void joinAGroup(Group group) {
     groups.add(group);
     group.addUserToGroup(this);
+    notifyListeners();
   }
 
   Group getGroup(String name, GroupTypes type) {
