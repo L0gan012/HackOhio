@@ -51,6 +51,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
+          height: height-50,
           child: Flex(
             direction: Axis.vertical,
             children: <Widget>[
