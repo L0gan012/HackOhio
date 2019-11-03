@@ -53,6 +53,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
             flex: 2,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
@@ -67,6 +68,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                     ),
                   ),
                   child: TextField(
+                    textAlignVertical: TextAlignVertical.center,
                     cursorColor: Colors.blue[100],
                     style: TextStyle(
                       fontFamily: 'Puritan',
@@ -74,7 +76,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                     ),
                     decoration: InputDecoration.collapsed(
                         hintText: 'First Name',
-                        hintStyle: TextStyle(fontSize: 20)),
+                        hintStyle: TextStyle(fontSize: 18)),
                   ),
                 ),
                 Container(
@@ -90,6 +92,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                     ),
                   ),
                   child: TextField(
+                    textAlignVertical: TextAlignVertical.center,
                     cursorColor: Colors.blue[100],
                     style: TextStyle(
                       fontFamily: 'Puritan',
@@ -97,7 +100,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                     ),
                     decoration: InputDecoration.collapsed(
                         hintText: 'Last Name',
-                        hintStyle: TextStyle(fontSize: 20)),
+                        hintStyle: TextStyle(fontSize: 18)),
                   ),
                 ),
                 Container(
@@ -113,13 +116,14 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                     ),
                   ),
                   child: TextField(
+                    textAlignVertical: TextAlignVertical.center,
                     cursorColor: Colors.blue[100],
                     style: TextStyle(
                       fontFamily: 'Puritan',
                       fontSize: 25,
                     ),
                     decoration: InputDecoration.collapsed(
-                        hintText: 'Age', hintStyle: TextStyle(fontSize: 20)),
+                        hintText: 'Age', hintStyle: TextStyle(fontSize: 18)),
                   ),
                 ),
                 Container(
@@ -135,13 +139,14 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                     ),
                   ),
                   child: TextField(
+                    textAlignVertical: TextAlignVertical.center,
                     cursorColor: Colors.blue[100],
                     style: TextStyle(
                       fontFamily: 'Puritan',
                       fontSize: 25,
                     ),
                     decoration: InputDecoration.collapsed(
-                        hintText: 'Email', hintStyle: TextStyle(fontSize: 20)),
+                        hintText: 'Email', hintStyle: TextStyle(fontSize: 18)),
                   ),
                 ),
                 Container(
@@ -157,6 +162,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                     ),
                   ),
                   child: TextField(
+                    textAlignVertical: TextAlignVertical.center,
                     cursorColor: Colors.blue[100],
                     style: TextStyle(
                       fontFamily: 'Puritan',
@@ -164,23 +170,33 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                     ),
                     decoration: InputDecoration.collapsed(
                         hintText: 'Password',
-                        hintStyle: TextStyle(fontSize: 20)),
+                        hintStyle: TextStyle(fontSize: 18)),
                   ),
                 ),
               ],
             ),
           ),
           Expanded(
-            child: Container(
-                child: FlatButton(
+            child: FlatButton(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => HomePage(new User())),
                 );
               },
-              child: Text('create ccount'),
-            )),
+              child: Container(
+                alignment: Alignment.center,
+                height: 40,
+                width: width - 20,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: Colors.blue[300]),
+                child: Text(
+                  'create account',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
           )
         ],
       ),

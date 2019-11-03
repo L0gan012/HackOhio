@@ -69,6 +69,7 @@ class LoginBodyFormState extends State<LoginBody> {
                         ),
                       ),
                       child: TextField(
+                        textAlignVertical: TextAlignVertical.center,
                         cursorColor: Colors.blue[100],
                         style: TextStyle(
                           fontFamily: 'Puritan',
@@ -94,6 +95,7 @@ class LoginBodyFormState extends State<LoginBody> {
                         ),
                       ),
                       child: TextField(
+                        textAlignVertical: TextAlignVertical.center,
                         cursorColor: Colors.blue[100],
                         obscureText: true,
                         style: TextStyle(
