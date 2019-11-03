@@ -105,7 +105,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                         ),
                         child: TextField(
                           onChanged: (String change) {
-                            current.lastName = change;
+                            model.lastName = change;
                           },
                           textAlignVertical: TextAlignVertical.center,
                           cursorColor: Colors.blue[100],
@@ -133,7 +133,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                         ),
                         child: TextField(
                           onChanged: (String change) {
-                            current.age = change;
+                            model.age = change;
                           },
                           textAlignVertical: TextAlignVertical.center,
                           cursorColor: Colors.blue[100],
@@ -161,7 +161,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                         ),
                         child: TextField(
                           onChanged: (String change) {
-                            current.email = change;
+                            model.email = change;
                           },
                           textAlignVertical: TextAlignVertical.center,
                           cursorColor: Colors.blue[100],
@@ -189,7 +189,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                         ),
                         child: TextField(
                           onChanged: (String change) {
-                            current.password = change;
+                            model.password = change;
                           },
                           textAlignVertical: TextAlignVertical.center,
                           cursorColor: Colors.blue[100],
@@ -212,25 +212,23 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                   ScopedModelDescendant<User>(builder: (context, child, model) {
                 return FlatButton(
                   onPressed: () {
-                    print(model.firstName);
-                    if (current.firstName == null) {
-                      print(1);
+                    if (model.firstName == null) {
                       SnackBar(
                         content: Text('Please enter your first name'),
                       );
-                    } else if (current.lastName == null) {
+                    } else if (model.lastName == null) {
                       SnackBar(
                         content: Text('Please enter your last name'),
                       );
-                    } else if (current.age == null) {
+                    } else if (model.age == null) {
                       SnackBar(
                         content: Text('Please enter your age'),
                       );
-                    } else if (current.email == null) {
+                    } else if (model.email == null) {
                       SnackBar(
                         content: Text('Please enter your email'),
                       );
-                    } else if (current.password == null) {
+                    } else if (model.password == null) {
                       SnackBar(
                         content: Text('Please enter a password'),
                       );
@@ -238,7 +236,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => HomePage(current)),
+                            builder: (context) => HomePage(model)),
                       );
                     }
                   },
