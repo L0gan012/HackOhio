@@ -1,5 +1,6 @@
 import 'package:caos/homeScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
 import 'userMetaData.dart';
 
 class CreateAccountPage extends StatefulWidget {
@@ -35,209 +36,229 @@ class CreateAccountPageState extends State<CreateAccountPage> {
           style: TextStyle(color: Colors.black54, fontFamily: 'Puritan'),
         ),
       ),
-      body: Flex(
-        direction: Axis.vertical,
-        children: <Widget>[
-          Expanded(
-              child: Stack(
-            alignment: Alignment.center,
-            children: <Widget>[
-              Icon(
-                Icons.account_circle,
-                size: 100,
-                color: Colors.white,
-              ),
-              Text('Set Photo')
-            ],
-          )),
-          Expanded(
-            flex: 2,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+      body: ScopedModel<User>(
+        model: current,
+        child: Flex(
+          direction: Axis.vertical,
+          children: <Widget>[
+            Expanded(
+                child: Stack(
+              alignment: Alignment.center,
               children: <Widget>[
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                  width: width * .666,
-                  height: height * .05,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      width: 3,
-                      color: Colors.transparent,
-                    ),
-                  ),
-                  child: TextField(
-                    onChanged: (String change) {
-                      current.firstName = change;
-                    },
-                    textAlignVertical: TextAlignVertical.center,
-                    cursorColor: Colors.blue[100],
-                    style: TextStyle(
-                      fontFamily: 'Puritan',
-                      fontSize: 25,
-                    ),
-                    decoration: InputDecoration.collapsed(
-                        hintText: 'First Name',
-                        hintStyle: TextStyle(fontSize: 18)),
-                  ),
+                Icon(
+                  Icons.account_circle,
+                  size: 100,
+                  color: Colors.white,
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                  width: width * .666,
-                  height: height * .05,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      width: 3,
-                      color: Colors.transparent,
-                    ),
-                  ),
-                  child: TextField(
-                    onChanged: (String change) {
-                      current.lastName = change;
-                    },
-                    textAlignVertical: TextAlignVertical.center,
-                    cursorColor: Colors.blue[100],
-                    style: TextStyle(
-                      fontFamily: 'Puritan',
-                      fontSize: 25,
-                    ),
-                    decoration: InputDecoration.collapsed(
-                        hintText: 'Last Name',
-                        hintStyle: TextStyle(fontSize: 18)),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                  width: width * .666,
-                  height: height * .05,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      width: 3,
-                      color: Colors.transparent,
-                    ),
-                  ),
-                  child: TextField(
-                    onChanged: (String change) {
-                      current.age = change;
-                    },
-                    textAlignVertical: TextAlignVertical.center,
-                    cursorColor: Colors.blue[100],
-                    style: TextStyle(
-                      fontFamily: 'Puritan',
-                      fontSize: 25,
-                    ),
-                    decoration: InputDecoration.collapsed(
-                        hintText: 'Age', hintStyle: TextStyle(fontSize: 18)),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                  width: width * .666,
-                  height: height * .05,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      width: 3,
-                      color: Colors.transparent,
-                    ),
-                  ),
-                  child: TextField(
-                    onChanged: (String change) {
-                      current.email = change;
-                    },
-                    textAlignVertical: TextAlignVertical.center,
-                    cursorColor: Colors.blue[100],
-                    style: TextStyle(
-                      fontFamily: 'Puritan',
-                      fontSize: 25,
-                    ),
-                    decoration: InputDecoration.collapsed(
-                        hintText: 'Email', hintStyle: TextStyle(fontSize: 18)),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                  width: width * .666,
-                  height: height * .05,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      width: 3,
-                      color: Colors.transparent,
-                    ),
-                  ),
-                  child: TextField(
-                    onChanged: (String change) {
-                      current.password = change;
-                    },
-                    textAlignVertical: TextAlignVertical.center,
-                    cursorColor: Colors.blue[100],
-                    style: TextStyle(
-                      fontFamily: 'Puritan',
-                      fontSize: 25,
-                    ),
-                    decoration: InputDecoration.collapsed(
-                        hintText: 'Password',
-                        hintStyle: TextStyle(fontSize: 18)),
-                  ),
-                ),
+                Text('Set Photo')
               ],
-            ),
-          ),
-          Expanded(
-            child: FlatButton(
-              onPressed: () {
-                if (current.firstName == null) {
-                  SnackBar(
-                    content: Text('Please enter your first name'),
+            )),
+            Expanded(
+              flex: 2,
+              child: ScopedModelDescendant<User>(
+                builder: (context, child, model) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                        width: width * .666,
+                        height: height * .05,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(
+                            width: 3,
+                            color: Colors.transparent,
+                          ),
+                        ),
+                        child: TextField(
+                          onChanged: (String change) {
+                            model.firstName = change;
+                            print(model.firstName);
+                          },
+                          textAlignVertical: TextAlignVertical.center,
+                          cursorColor: Colors.blue[100],
+                          style: TextStyle(
+                            fontFamily: 'Puritan',
+                            fontSize: 25,
+                          ),
+                          decoration: InputDecoration.collapsed(
+                              hintText: 'First Name',
+                              hintStyle: TextStyle(fontSize: 18)),
+                        ),
+                      ),
+                      Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                        width: width * .666,
+                        height: height * .05,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(
+                            width: 3,
+                            color: Colors.transparent,
+                          ),
+                        ),
+                        child: TextField(
+                          onChanged: (String change) {
+                            current.lastName = change;
+                          },
+                          textAlignVertical: TextAlignVertical.center,
+                          cursorColor: Colors.blue[100],
+                          style: TextStyle(
+                            fontFamily: 'Puritan',
+                            fontSize: 25,
+                          ),
+                          decoration: InputDecoration.collapsed(
+                              hintText: 'Last Name',
+                              hintStyle: TextStyle(fontSize: 18)),
+                        ),
+                      ),
+                      Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                        width: width * .666,
+                        height: height * .05,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(
+                            width: 3,
+                            color: Colors.transparent,
+                          ),
+                        ),
+                        child: TextField(
+                          onChanged: (String change) {
+                            current.age = change;
+                          },
+                          textAlignVertical: TextAlignVertical.center,
+                          cursorColor: Colors.blue[100],
+                          style: TextStyle(
+                            fontFamily: 'Puritan',
+                            fontSize: 25,
+                          ),
+                          decoration: InputDecoration.collapsed(
+                              hintText: 'Age',
+                              hintStyle: TextStyle(fontSize: 18)),
+                        ),
+                      ),
+                      Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                        width: width * .666,
+                        height: height * .05,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(
+                            width: 3,
+                            color: Colors.transparent,
+                          ),
+                        ),
+                        child: TextField(
+                          onChanged: (String change) {
+                            current.email = change;
+                          },
+                          textAlignVertical: TextAlignVertical.center,
+                          cursorColor: Colors.blue[100],
+                          style: TextStyle(
+                            fontFamily: 'Puritan',
+                            fontSize: 25,
+                          ),
+                          decoration: InputDecoration.collapsed(
+                              hintText: 'Email',
+                              hintStyle: TextStyle(fontSize: 18)),
+                        ),
+                      ),
+                      Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                        width: width * .666,
+                        height: height * .05,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(
+                            width: 3,
+                            color: Colors.transparent,
+                          ),
+                        ),
+                        child: TextField(
+                          onChanged: (String change) {
+                            current.password = change;
+                          },
+                          textAlignVertical: TextAlignVertical.center,
+                          cursorColor: Colors.blue[100],
+                          style: TextStyle(
+                            fontFamily: 'Puritan',
+                            fontSize: 25,
+                          ),
+                          decoration: InputDecoration.collapsed(
+                              hintText: 'Password',
+                              hintStyle: TextStyle(fontSize: 18)),
+                        ),
+                      ),
+                    ],
                   );
-                } else if (current.lastName == null) {
-                  SnackBar(
-                    content: Text('Please enter your last name'),
-                  );
-                } else if (current.age == null) {
-                  SnackBar(
-                    content: Text('Please enter your age'),
-                  );
-                } else if (current.email == null) {
-                  SnackBar(
-                    content: Text('Please enter your email'),
-                  );
-                } else if (current.password == null) {
-                  SnackBar(
-                    content: Text('Please enter a password'),
-                  );
-                } else {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => HomePage(new User())),
-                  );
-                }
-              },
-              child: Container(
-                alignment: Alignment.center,
-                height: 40,
-                width: width - 20,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: Colors.blue[300]),
-                child: Text(
-                  'create account',
-                  style: TextStyle(color: Colors.white),
-                ),
+                },
               ),
             ),
-          )
-        ],
+            Expanded(
+              child:
+                  ScopedModelDescendant<User>(builder: (context, child, model) {
+                return FlatButton(
+                  onPressed: () {
+                    print(model.firstName);
+                    if (current.firstName == null) {
+                      print(1);
+                      SnackBar(
+                        content: Text('Please enter your first name'),
+                      );
+                    } else if (current.lastName == null) {
+                      SnackBar(
+                        content: Text('Please enter your last name'),
+                      );
+                    } else if (current.age == null) {
+                      SnackBar(
+                        content: Text('Please enter your age'),
+                      );
+                    } else if (current.email == null) {
+                      SnackBar(
+                        content: Text('Please enter your email'),
+                      );
+                    } else if (current.password == null) {
+                      SnackBar(
+                        content: Text('Please enter a password'),
+                      );
+                    } else {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => HomePage(current)),
+                      );
+                    }
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 40,
+                    width: width - 20,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.blue[300]),
+                    child: Text(
+                      'create account',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                );
+              }),
+            )
+          ],
+        ),
       ),
     );
   }
